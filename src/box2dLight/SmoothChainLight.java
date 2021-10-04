@@ -299,7 +299,7 @@ public class SmoothChainLight extends Light implements DebugLight {
 	}
 
 	/**
-	 * Sets end scale of first and last lights in the chain {@see SmoothLineLight#setEndScale}
+	 * Sets end scale of first and last lights in the chain see {@link SmoothLineLight#setEndScale}
 	 * @param endScale end scale to set, negative values may produce strange results
 	 */
 	public void setEndScale(float endScale) {

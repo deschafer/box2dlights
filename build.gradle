@@ -1,6 +1,9 @@
 plugins {
 	id 'java-library'
+	id 'maven-publish'
 }
+
+group = 'com.badlogicgames.box2dlights'
 
 sourceSets {
 	main {
@@ -15,8 +18,49 @@ sourceSets {
 	}
 }
 
+task libraryJar(type: Jar, dependsOn:classes) {
+	from sourceSets.main.output.classesDirs
+	from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+	classifier = 'library'
+}
+
+task sourcesJar(type: Jar, dependsOn:classes) {
+	from sourceSets.main.allSource
+	classifier = 'sources'
+}
+
+task javadocJar(type: Jar, dependsOn:javadoc) {
+	from javadoc.destinationDir
+	classifier = 'javadoc'
+}
+
+artifacts {
+	archives libraryJar
+	archives sourcesJar
+	archives javadocJar
+}
+
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			groupId = 'com.badlogicgames.box2dlights'
+			artifactId = 'box2dlights'
+
+			from components.java
+			afterEvaluate {
+				artifact libraryJar
+				artifact sourcesJar
+				artifact javadocJar
+			}
+		}
+	}
+}
+
+
 ext.gdxVersion = "1.9.10"
-version = "1.6-SNAPSHOT"
+// custom
+version = "2.0.custom-SNAPSHOT"
 
 repositories {
 	mavenCentral()

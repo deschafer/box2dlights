@@ -451,7 +451,7 @@ public abstract class SmoothPositionalLight extends Light implements DebugLight 
 		}
 
 		@Override public String toString () {
-			return String.format("Ray([%.2f, %.2f] a=%.2f, f=%.2f)", x, y, angle * MathUtils.radDeg, fraction);
+			return "Ray([" + x +  ", " + y + "] a=" + angle * MathUtils.radDeg + ", f=" + fraction + ")";
 		}
 	}
 
