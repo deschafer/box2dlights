@@ -1,0 +1,31 @@
+plugins {
+	id 'java-library'
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ["src"]
+		}
+	}
+	test {
+		java {
+			srcDirs = ["test"]
+		}
+	}
+}
+
+ext.gdxVersion = "1.9.10"
+version = "1.6-SNAPSHOT"
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
+	implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+	testImplementation "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+	testImplementation "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
+	testImplementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+}

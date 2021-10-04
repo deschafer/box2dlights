@@ -132,10 +132,10 @@ public abstract class PositionalLight extends Light {
 	 * @param degrees
 	 *            directional relative offset in degrees 
 	 */
-	public void attachToBody(Body body, float offsetX, float offSetY, float degrees) {
+	public void attachToBody(Body body, float offsetX, float offsetY, float degrees) {
 		this.body = body;
 		bodyOffsetX = offsetX;
-		bodyOffsetY = offSetY;
+		bodyOffsetY = offsetY;
 		bodyAngleOffset = degrees;
 		if (staticLight) dirty = true;
 	}
@@ -279,5 +279,28 @@ public abstract class PositionalLight extends Light {
 		}
 		softShadowMesh.setVertices(segments, 0, size);
 	}
-	
+
+	public float getBodyOffsetX() {
+		return bodyOffsetX;
+	}
+
+	public float getBodyOffsetY() {
+		return bodyOffsetY;
+	}
+
+	public float getBodyAngleOffset() {
+		return bodyAngleOffset;
+	}
+
+	public void setBodyOffsetX(float bodyOffsetX) {
+		this.bodyOffsetX = bodyOffsetX;
+	}
+
+	public void setBodyOffsetY(float bodyOffsetY) {
+		this.bodyOffsetY = bodyOffsetY;
+	}
+
+	public void setBodyAngleOffset(float bodyAngleOffset) {
+		this.bodyAngleOffset = bodyAngleOffset;
+	}
 }
