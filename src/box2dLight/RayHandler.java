@@ -103,7 +103,8 @@ public class RayHandler implements Disposable {
 	 *
 	 * <p>NOTE: FBO size is 1/4 * screen size and used by default.
 	 *
-	 * <ul>Default setting are:
+	 * Default setting are:
+	 * <ul>
 	 *     <li>culling = true
 	 *     <li>shadows = true
 	 *     <li>diffuse = false
