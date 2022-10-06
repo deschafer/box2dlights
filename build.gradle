@@ -6,10 +6,11 @@ sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
 ext {
-    gdxVersion = '1.9.11-SNAPSHOT'
+    gdxVersion = '1.11.0'
 }
 
 repositories {
+    mavenCentral()
     jcenter()
     maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
@@ -25,11 +26,10 @@ sourceSets {
 }
 
 dependencies {
-    compile "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
-    compile "com.badlogicgames.gdx:gdx:$gdxVersion"
-    compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-    compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-
+    implementation group: 'com.badlogicgames.gdx', name: 'gdx-backend-lwjgl3', version: '1.11.0'
+    implementation group: 'com.badlogicgames.gdx', name: 'gdx', version: '1.11.0'
+    implementation group: 'com.badlogicgames.gdx', name: 'gdx-box2d', version: '1.11.0'
+    implementation group: 'com.badlogicgames.gdx', name: 'gdx-freetype', version: '1.11.0'
 }
 
 jar {
