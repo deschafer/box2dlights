@@ -113,6 +113,7 @@ public abstract class SmoothPositionalLight extends Light implements DebugLight 
 			if ((globalFilterA != null) && !globalContactFilter(fixture)) return -1;
 			if ((filterA != null) && !contactFilter(fixture)) return -1;
 			if (ignoreBody && fixture.getBody() == getBody()) return -1;
+			if (fixture.isSensor()) return -1;
 
 			current.set(point.x, point.y, fraction);
 			return fraction;
@@ -134,7 +135,7 @@ public abstract class SmoothPositionalLight extends Light implements DebugLight 
 	protected QueryCallback smoothCallback = new QueryCallback() {
 		@Override public boolean reportFixture (Fixture fixture) {
 			// NOTE we do this because chain shape is reported for each segment in aabb, we test entire shape, so we dont care
-			if (!foundFixtures.contains(fixture, true)) {
+			if (!foundFixtures.contains(fixture, true) && !fixture.isSensor()) {
 				if (fixture.getBody().getType() == BodyDef.BodyType.StaticBody) {
 					if (!ignoreStaticBodies) {
 						staticFixtures++;

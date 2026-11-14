@@ -438,8 +438,8 @@ public abstract class Light implements Disposable {
 			if (ignoreBody && fixture.getBody() == getBody())
 				return -1;
 			
-			// if (fixture.isSensor())
-			// return -1;
+			if (fixture.isSensor())
+			     return -1;
 			
 			mx[m_index] = point.x;
 			my[m_index] = point.y;
